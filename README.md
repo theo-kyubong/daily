@@ -8,4 +8,7 @@
 - Matplotlib을 활용한 시각화
 - 구글맵 API 활용
 
-## [스팸 문자 분류 (_updating_)]()
+## [스팸 문자 분류 (_updating_)](https://github.com/lee-kyubong/daily/blob/master/Python/latent-dirichlet-allocation/document-clustering.ipynb)
+- 문서 분류를 위한 데이터 전처리
+- 피처를 이용한 분류
+- 토픽 모델링을 이용한 분류(LDA)
