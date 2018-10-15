@@ -58,3 +58,29 @@ a_2 <- test_2[test_2$rank < 6, ]
 pool <- q_3 %>%
   group_by(country_code) %>%
   summarise(count = n_distinct(user_id))
+
+
+
+#############################################
+#reshape
+library(MASS)
+str(Cars93)
+
+table(Cars93$Type)
+
+Cars93_sample <- subset(Cars93, 
+                         select = c(Type, Origin, MPG.city, MPG.highway), 
+                         subset = (Type %in% c("Compact", "Van"))) 
+
+
+Cars93_sample_melt <- melt(data = Cars93_sample, 
+                            id.vars = c("Type", "Origin"), 
+                            measure.vars = c("MPG.city", "MPG.highway"))
+
+
+cast(data = Cars93_sample_melt, Type ~ variable, fun = mean)
+
+# 한개의 id.var + variable (세로) & 다른 id.var (가로) 조합의 value 값에 mean 함수 적용
+cast(data = Cars93_sample_melt, Type + variable ~ Origin, fun = mean)
+
+#http://rfriend.tistory.com/80 [R, Python 분석과 프로그래밍 (by R Friend)]
