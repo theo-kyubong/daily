@@ -84,3 +84,19 @@ cast(data = Cars93_sample_melt, Type ~ variable, fun = mean)
 cast(data = Cars93_sample_melt, Type + variable ~ Origin, fun = mean)
 
 #http://rfriend.tistory.com/80 [R, Python 분석과 프로그래밍 (by R Friend)]
+
+########
+#PU의 mean
+a2 <- q1 %>%
+  group_by(country_code) %>%
+  summarise(meanofsales = mean(sales, na.rm = T))
+
+#로그 중 unique user
+a3 <- q1 %>%
+  group_by(country_code) %>%
+  summarise(count = n_distinct(user_id))
+
+#국가별 로그 cum
+a4 <- q1 %>%
+  group_by(country_code) %>%
+  tally()
